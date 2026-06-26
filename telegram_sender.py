@@ -14,4 +14,5 @@ def send_message(message):
     }
 
     response = requests.post(url, data=payload)
-    return response.json()
+print(response.text)
+return response.json()
