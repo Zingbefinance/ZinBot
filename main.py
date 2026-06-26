@@ -52,8 +52,7 @@ https://zingbefinance.com
 ✈️ <b>Telegram :</b>
 https://t.me/Zingbefinanc
 
-❌ <b>X :</b>
-https://x.com/G
+https://x.com/GogbeZingbe
 
 🔗 <a href="{data['pair']}">DexScreener</a>
 
