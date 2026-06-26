@@ -1,4 +1,5 @@
 from price import get_price
+from telegram import send_message
 import time
 
 print("🚀 ZinBot démarré")
