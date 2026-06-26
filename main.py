@@ -1,12 +1,9 @@
 from config import CHECK_INTERVAL, POST_INTERVAL
 from price import get_price
 import time
-print("🚀 ZinBot démarré")
+
 last_post = 0
-from config import CHECK_INTERVAL, POST_INTERVAL
-last_post = 0
-from price import get_price
-import time
+
 
 print("🚀 ZinBot démarré")
 
@@ -15,6 +12,10 @@ while True:
         data = get_price()
 
         if data:
+            current_time = time.time()
+
+           if current_time - last_post >= POST_INTERVAL:
+               last_post = current_time
             print("Prix :", data["price"])
             print("Market Cap :", data["marketcap"])
             print("Liquidité :", data["liquidity"])
