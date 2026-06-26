@@ -1,3 +1,10 @@
+from config import CHECK_INTERVAL, POST_INTERVAL
+from price import get_price
+import time
+print("🚀 ZinBot démarré")
+last_post = 0
+from config import CHECK_INTERVAL, POST_INTERVAL
+last_post = 0
 from price import get_price
 import time
 
@@ -19,4 +26,4 @@ while True:
     except Exception as e:
         print("Erreur :", e)
 
-    time.sleep(60)
+    time.sleep(CHECK_INTERVAL)
