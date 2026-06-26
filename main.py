@@ -1,11 +1,11 @@
 from config import CHECK_INTERVAL, POST_INTERVAL
 from price import get_price
+from telegram_sender import send_message
 import time
 
-last_post = 0
-
-
 print("🚀 ZinBot démarré")
+
+last_post = 0
 
 while True:
     try:
@@ -14,13 +14,11 @@ while True:
         if data:
             current_time = time.time()
 
-           if current_time - last_post >= POST_INTERVAL:
-               last_post = current_time
-            print("Prix :", data["price"])
-            print("Market Cap :", data["marketcap"])
-            print("Liquidité :", data["liquidity"])
-            print("Volume 24h :", data["volume24h"])
-            print("------------------------")
+            if current_time - last_post >= POST_INTERVAL:
+                message = f"💰 ZING TOKEN\n\nPrix actuel : ${data['price']}"
+                send_message(message)
+                print("Message Telegram envoyé.")
+                last_post = current_time
         else:
             print("Le token n'a pas encore de paire active.")
 
