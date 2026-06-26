@@ -20,32 +20,42 @@ while True:
                 variation = float(data["change24h"])
 
                 if variation >= 0:
-                    emoji = "🟢"
+                    tendance = "📈"
                     variation_txt = f"+{variation:.2f}%"
                 else:
-                    emoji = "🔴"
+                    tendance = "📉"
                     variation_txt = f"{variation:.2f}%"
 
                 update_time = datetime.utcnow().strftime("%H:%M UTC")
 
-                message = f"""💰 <b>ZING TOKEN (ZTC)</b>
+                message = f"""🪙 <b>ZING TOKEN (ZTC)</b>
 
-💵 <b>Prix :</b> ${float(data['price']):.8f}
+💵 <b>Prix USD :</b> ${float(data['price']):.8f}
+🟣 <b>Prix SOL :</b> {data['priceSol']} SOL
 
-{emoji} <b>Variation 24h :</b> {variation_txt}
+{tendance} <b>Variation 24h :</b> {variation_txt}
 
 💎 <b>Market Cap :</b> ${float(data['marketcap']):,.2f}
-
 💧 <b>Liquidité :</b> ${float(data['liquidity']):,.2f}
-
 📊 <b>Volume 24h :</b> ${float(data['volume24h']):,.2f}
 
-🟢 <b>Achats 24h :</b> {data['buys24h']}
-🔴 <b>Ventes 24h :</b> {data['sells24h']}
+🟢 <b>Achats :</b> {data['buys24h']}
+🔴 <b>Ventes :</b> {data['sells24h']}
 
-⏰ <b>Dernière mise à jour :</b> {update_time}
+🕒 <b>Mise à jour :</b> {update_time}
 
-🔗 <a href="{data['pair']}">Voir sur DexScreener</a>
+━━━━━━━━━━━━━━━
+
+🌐 <b>Site :</b>
+https://zingbefinance.com
+
+✈️ <b>Telegram :</b>
+https://t.me/Zingbefinanc
+
+❌ <b>X :</b>
+https://x.com/G
+
+🔗 <a href="{data['pair']}">DexScreener</a>
 
 🤖 <i>Mise à jour automatique toutes les 30 minutes</i>
 """
