@@ -2,6 +2,7 @@ from config import CHECK_INTERVAL, POST_INTERVAL
 from price import get_price
 from telegram_sender import send_or_edit_message
 import time
+from datetime import datetime
 
 print("🚀 ZinBot démarré")
 
@@ -16,13 +17,23 @@ while True:
 
             if current_time - last_post >= POST_INTERVAL:
 
-                message = f"""💰 <b>ZING TOKEN</b>
+                update_time = datetime.utcnow().strftime("%H:%M UTC")
 
-📈 <b>Prix :</b> ${data['price']}
+                message = f"""💰 <b>ZING TOKEN (ZTC)</b>
 
-🤖 Mise à jour automatique toutes les 30 minutes
+📈 <b>Prix :</b> ${float(data['price']):.8f}
+
+💎 <b>Market Cap :</b> ${float(data['marketcap']):,.2f}
+
+💧 <b>Liquidité :</b> ${float(data['liquidity']):,.2f}
+
+📊 <b>Volume 24h :</b> ${float(data['volume24h']):,.2f}
+
+⏰ <b>Dernière mise à jour :</b> {update_time}
 
 🔗 <a href="{data['pair']}">Voir sur DexScreener</a>
+
+🤖 <i>Mise à jour automatique toutes les 30 minutes</i>
 """
 
                 send_or_edit_message(message)
