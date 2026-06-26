@@ -1,4 +1,3 @@
-
 from config import CHECK_INTERVAL, POST_INTERVAL
 from price import get_price
 from telegram_sender import send_or_edit_message
@@ -19,18 +18,19 @@ while True:
 
                 message = f"""💰 <b>ZING TOKEN</b>
 
-📈 Prix actuel : <b>${data['price']}</b>
-⏰ Mise à jour automatique
+📈 <b>Prix :</b> ${data['price']}
 
-🔗 https://dexscreener.com/solana/{data['pair']}
+🤖 Mise à jour automatique toutes les 30 minutes
+
+🔗 <a href="{data['pair']}">Voir sur DexScreener</a>
 """
 
                 send_or_edit_message(message)
                 last_post = current_time
-                print("✅ Message Telegram mis à jour.")
+                print("✅ Message Telegram envoyé.")
 
         else:
-            print("Le token n'a pas encore de paire active.")
+            print("Aucune paire trouvée.")
 
     except Exception as e:
         print("Erreur :", e)
