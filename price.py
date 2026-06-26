@@ -19,9 +19,12 @@ def get_price():
     pair = data["pairs"][0]
 
     return {
-        "price": pair["priceUsd"],
-        "marketcap": pair.get("marketCap", "0"),
-        "liquidity": pair["liquidity"]["usd"],
-        "volume24h": pair["volume"]["h24"],
-        "pair": pair["url"]
+        "price": pair.get("priceUsd", "0"),
+        "marketcap": pair.get("marketCap", 0),
+        "liquidity": pair.get("liquidity", {}).get("usd", 0),
+        "volume24h": pair.get("volume", {}).get("h24", 0),
+        "change24h": pair.get("priceChange", {}).get("h24", 0),
+        "buys24h": pair.get("txns", {}).get("h24", {}).get("buys", 0),
+        "sells24h": pair.get("txns", {}).get("h24", {}).get("sells", 0),
+        "pair": pair.get("url", "")
     }
