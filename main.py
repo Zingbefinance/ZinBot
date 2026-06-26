@@ -17,17 +17,31 @@ while True:
 
             if current_time - last_post >= POST_INTERVAL:
 
+                variation = float(data["change24h"])
+
+                if variation >= 0:
+                    emoji = "🟢"
+                    variation_txt = f"+{variation:.2f}%"
+                else:
+                    emoji = "🔴"
+                    variation_txt = f"{variation:.2f}%"
+
                 update_time = datetime.utcnow().strftime("%H:%M UTC")
 
                 message = f"""💰 <b>ZING TOKEN (ZTC)</b>
 
-📈 <b>Prix :</b> ${float(data['price']):.8f}
+💵 <b>Prix :</b> ${float(data['price']):.8f}
+
+{emoji} <b>Variation 24h :</b> {variation_txt}
 
 💎 <b>Market Cap :</b> ${float(data['marketcap']):,.2f}
 
 💧 <b>Liquidité :</b> ${float(data['liquidity']):,.2f}
 
 📊 <b>Volume 24h :</b> ${float(data['volume24h']):,.2f}
+
+🟢 <b>Achats 24h :</b> {data['buys24h']}
+🔴 <b>Ventes 24h :</b> {data['sells24h']}
 
 ⏰ <b>Dernière mise à jour :</b> {update_time}
 
