@@ -20,6 +20,7 @@ def get_price():
 
     return {
         "price": pair.get("priceUsd", "0"),
+        "priceSol": pair.get("priceNative", "0"),
         "marketcap": pair.get("marketCap", 0),
         "liquidity": pair.get("liquidity", {}).get("usd", 0),
         "volume24h": pair.get("volume", {}).get("h24", 0),
