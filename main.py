@@ -17,7 +17,7 @@ while True:
         else:
             print("Le token n'a pas encore de paire active.")
 
-    except Exception as e:
+        except Exception as e:
         print("Erreur :", e)
 
     time.sleep(60)
