@@ -69,4 +69,4 @@ https://x.com/GogbeZingbe
     except Exception as e:
         print("Erreur :", e)
 
-    time.sleep(CHECK_INTERVAL)          
+    time.sleep(CHECK_INTERVAL)         
